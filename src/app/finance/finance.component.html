@@ -1,0 +1,36 @@
+<h1>Finance Logger</h1>
+<p *ngIf="">{{invoice}} is {{to}} owed for {{amount}} </p>
+<p *ngIf="">{{invoice}} is {{to}} paid for {{amount}} </p>
+<div>
+
+    <form class="form-group" #financeForm="ngForm" (ngSubmit)="save(financeForm)">
+
+        <div>
+            <label for="type">Type :</label>
+            <select ngModel name="type" id="type">
+                <option value="Invoice">Invoice</option>
+                <option value="Payment">Payment</option>
+                <option value="Cheque">Cheque</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="to">To / From :</label>
+            <input ngModel type="text" name="to" id="to">
+
+        </div>
+
+        <div>
+            <label for="details">Details :</label>
+            <input ngModel type="text" name="details" id="details">
+        </div>
+
+        <div>
+            <label for="amount">Amount(Rs.) :</label>
+            <input ngModel type="text" name="amount" id="amount">
+        </div>
+
+        <button type="submit">--Add--</button>
+
+    </form>
+</div>
