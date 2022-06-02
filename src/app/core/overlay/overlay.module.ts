@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgModule, Output, SkipSelf } from "@angular/core";
+import { EnsureModuleLoadedOnceGuard } from "../ensure-module-loaded-once.guard";
 import { OverlayRequestResponseInterceptor } from "./overlay-request-response.interceptor";
 import { OverlayComponent } from "./overlay.component";
 
