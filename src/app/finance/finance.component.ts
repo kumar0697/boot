@@ -19,8 +19,7 @@ export class FinanceComponent implements OnInit {
   // amount; 
 
   save(form: NgForm){
-    let finance = form.value
-    
+    console.log(form.value);
 
 
   }
