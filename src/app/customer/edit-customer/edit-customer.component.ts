@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-edit-customer',
+  selector: 'app-customer-edit',
   templateUrl: './edit-customer.component.html',
   styleUrls: ['./edit-customer.component.sass']
 })
-export class EditCustomerComponent implements OnInit {
+export class CustomerEditComponent implements OnInit {
+  canDeactivate(): boolean | import("rxjs").Observable<boolean> | Promise<boolean> {
+      throw new Error("Method not implemented.");
+  }
 
   constructor() { }
 

@@ -1,0 +1,39 @@
+<div class="customers view indent">
+    <div class=" container">
+        <header>
+            <h3>
+                <span class=" glyphicon glyphicon-folder-open "></span>&nbsp;&nbsp;Orders
+            </h3>
+        </header>
+        <br>
+
+        <div class=" container">
+            <div *ngIf=" customers && customers.length">
+                <div class="row" *ngFor=" let customer of customers; trackBy: trackbyService.customer">
+                    <h4>{{ customer.firstName | capitalize}} {{ customer.lastName | capitalize}} </h4>
+                    <br>
+                    <table *ngIf=" customer.orders && customer.orders.length"
+                        class=" table table-striped table-hover orders-table">
+                        <tr *ngFor="let order of customer.orders; trackBy: trackbyService.order">
+                            <td>{{ order.productName}} </td>
+                            <td class="text-right">{{ order.itemCost | currency : 'Rupees' : 'symbol'}} </td>
+                        </tr>
+                        <tr class=" summary-border">
+                            <td>&nbsp;</td>
+                            <td class=" text-right">{{ customer.orderTotal | currency : 'Rupees': 'symbol'}} </td>
+                        </tr>
+                    </table>
+                    <div *ngIf=" !customers.orders || !customer.orders.length">
+                        No orders found
+                    </div>
+                </div>
+
+                <app-pagination [hidden]="!customers || !customers.length" [totalItems]="totalRecords"
+                    [pageSize]="pageSize" (pageChanged)="pageChanged($event)"></app-pagination>
+            </div>
+            <div *ngIf="!customers || !customers.length">
+                No customers found
+            </div>
+        </div>
+    </div>
+</div>

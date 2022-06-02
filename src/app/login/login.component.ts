@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { stat } from 'fs';
+import { GrowlerMessageType, GrowlerService } from '../core/growler/growler.service';
 import { AuthService } from '../core/services/auth.service';
+import { LoggerService } from '../core/services/logger.service';
+import { ValidationService } from '../core/services/validation.service';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +28,7 @@ get f(): { [key : string]: AbstractControl } {
 
    buildForm(){
      this.loginForm = this.formBuilder.group({
-       username: ['', [Validators.required, ValidationService.usernameValidator]],
+       email: ['', [Validators.required, ValidationService.emailValidator]],
        password: ['', [Validators.required, ValidationService.passwordValidator]],
      })
    }

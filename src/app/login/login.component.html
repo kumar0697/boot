@@ -1,4 +1,4 @@
-<h1>Login</h1>
+<!-- <h1>Login</h1>
 
 <form>
     <input type="text" name="username" placeholder="Username">
@@ -11,4 +11,60 @@
     <a href="">Forgot Password?</a>
     <button>LogIn</button>
 
-</form>
+</form> -->
+
+<div class="view">
+    <div class="container">
+        <header>
+            <h3>
+                <span></span>
+                Login
+            </h3>
+        </header>
+        <br>
+        <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm)" class="login-form" novalidate>
+            <div class="login">
+                <div class="row">
+                    <div class="col-md-2">
+                        Email:
+                    </div>
+                    <div class="col-md-10">
+                        <input type="email" name="email" class="form-control" formControlName="email">
+                        <div class="alert alert-danger" data-cy="email-error" [hidden]="f['email'].untouched || f['email'].valid">
+                             A valid email address is required
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-2">
+                        Password: 
+                    </div>
+                    <div class="col-md-2">
+                        <input type="password" name="password" class=" form-control" formControlName="password">
+                        <div class="alert alert-danger" data-cy="password-error" [hidden]="f['password'].untouched || f['password'].valid">
+                            Password is required (6 or more characters with at least one number)
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-success" [disabled]="!loginform.valid">Login</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <br>
+                        <div *ngIf=" errorMessage">
+                            <span></span> 
+                            Error: {{ errorMessage }}              
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
