@@ -1,6 +1,9 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, Observable, throwError } from "rxjs";
+import { IApiResponse, ICustomer, IOrder, IPagedResults, IState } from "src/app/shared/interfaces";
+import { customers } from "src/app/shared/mocks";
+import { UtilitiesService } from "./utilities.service";
 
 @Injectable()
 export class DataService {
@@ -18,7 +21,7 @@ getCustomerPage(page: number, pageSize: number): Observable<IPagedResults<ICusto
         {observe: 'reponse'})
         .pipe(
             map(res => {
-                const xInlineCount = res.headesrs.get('X-InlineCount');
+                const xInlineCount = res.headers.get('X-InlineCount');
                 const totalRecords = Number(xInlineCount);
                 const customers = res.body as ICustomer[];
                 this.calculateCustomersOrderTotal(customers);
@@ -35,7 +38,7 @@ getCustomers(): Observable<ICustomer[]> {
     return this.http.get<ICustomer[]>(this.customersBaseUrl)
          .pipe(
              map(customers => {
-                 this.calculateCustomerOrderTotal(customers);
+                 this.calculateCustomersOrderTotal(customers);
                  return customers;
              }),
              catchError(this.handleError)
@@ -75,6 +78,11 @@ deleteCustomer(id : number): Observable<boolean> {
         );
 }
 
+getStates() :Observable<IState[]>{
+    return this.http.get<IState[]>(this.baseUrl + '/api/states')
+    .pipe(catchError(this.handleError));
+}
+
 
 private handleError(error: HttpErrorResponse){
     console.error('server error: ',error);
@@ -86,7 +94,7 @@ private handleError(error: HttpErrorResponse){
     return throwError (() => error || ' Node.js server error');
 }
 
-calculateCustomersOrdersTotal(customer: ICustomer[]) {
+calculateCustomersOrderTotal(customers: ICustomer[]) {
     for (const customer of customers) {
         if( customer && customers) {
             let total = 0 ;

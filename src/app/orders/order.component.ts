@@ -1,6 +1,7 @@
 import { Component, OnInit, TrackByFunction } from "@angular/core";
 import { DataService } from "../core/services/data.service";
 import { TrackByService } from "../core/services/trackby.service";
+import { ICustomer, IPagedResults } from "../shared/interfaces";
 
 @Component({
     selector: 'app-orders',

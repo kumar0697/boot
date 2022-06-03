@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { CustomerDetailComponent } from "./customer-detail/customer-detail.component";
+import { CustomerEditComponent } from "./customer-edit/customer-edit.component";
 import { CustomerOrderComponent } from "./customer-order/customer-order.component";
 import { CustomerComponent } from "./customer.component";
-import { CustomerEditComponent } from "./edit-customer/edit-customer.component";
 import { CanActivateGuard } from "./guards/can-activate.guard";
 import { CanDeactivateGuard } from "./guards/can-deactivate.guard";
 

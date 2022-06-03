@@ -5,6 +5,7 @@ import { GrowlerMessageType, GrowlerService } from '../core/growler/growler.serv
 import { AuthService } from '../core/services/auth.service';
 import { LoggerService } from '../core/services/logger.service';
 import { ValidationService } from '../core/services/validation.service';
+import { IUserLogin } from '../shared/interfaces';
 
 @Component({
   selector: 'app-login',

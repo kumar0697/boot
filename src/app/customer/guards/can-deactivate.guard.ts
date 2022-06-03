@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { CanDeactivate, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
 import { Observable } from "rxjs";
 import { LoggerService } from "src/app/core/services/logger.service";
-import { CustomerEditComponent } from "../edit-customer/edit-customer.component";
+import { CustomerEditComponent } from "../customer-edit/customer-edit.component";
 
 @Injectable()
 export class CanDeactivateGuard implements CanDeactivate<CustomerEditComponent> {
